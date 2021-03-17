@@ -1,0 +1,42 @@
+<DOCTYPE!>
+<html>
+  <head>
+    <title>Character Creator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="grid-container">
+
+    <div class="grid-child-input">
+        <h1>Editor</h1>
+        <form action="/action_page.php">
+          <label for="shape">Shape:</label><br>
+          <select id="shape" name="shape">
+            <option value="circle">Circle</option>
+            <option value="square">Square</option>
+            <option value="triangle">Triangle</option>
+          </select><br>
+          <label for="limb">Limb(s):</label><br>
+          <select id="limb" name="limb">
+            <option value="arms">Arms</option>
+            <option value="tail">Tail</option>
+            <option value="wings">Wings</option>
+          </select><br>
+          <label for="color">Body Color:</label><br>
+          <input type="color" id="color" name="color"><br><br>
+          <input type="submit" value="Create!">
+        </form>
+    </div>
+
+    <div class="grid-child-output">
+        <h1>Output</h1>
+        <div id="output-image">
+          <img src="myPic.jpg"></img>
+        </div>
+    </div>
+
+  </div>
+  </body>
+</html>
