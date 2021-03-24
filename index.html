@@ -11,7 +11,7 @@
 
     <div class="grid-child-input">
         <h1>Editor</h1>
-        <form action="/action_page.php">
+        <form id="form">
           <label for="shape">Shape:</label><br>
           <select id="shape" name="shape">
             <option value="circle">Circle</option>
@@ -26,17 +26,55 @@
           </select><br>
           <label for="color">Body Color:</label><br>
           <input type="color" id="color" name="color"><br><br>
-          <input type="submit" value="Create!">
+          <input type="button" value="Create!" onclick="update()">
         </form>
     </div>
 
     <div class="grid-child-output">
         <h1>Output</h1>
         <div id="output-image">
-          <img src="myPic.jpg"></img>
+          <img id="creature" src=""></img>
+          <script>
+          function update(){
+          var form = document.getElementById("form");
+          var image = "body.PNG";
+          if(form.elements[0].value==="circle"){
+            image = "circle.PNG";
+          }
+          else if(form.elements[0].value==="square"){
+            image = "square.PNG";
+          }
+          else if(form.elements[0].value==="triangle"){
+            image = "triangle.PNG";
+          }
+          document.getElementById('creature').src = image;
+          }
+          </script>
         </div>
     </div>
 
   </div>
+  <h1>Combining multiple images into a single one</h1>
+<img class="image" src="body.PNG"/>
+<img class="image" src="eye.PNG"/>
+<canvas class="result"></canvas>
+<br />
+<button class="Btn">CLICK HERE</button>
+<h3>Click on the above button to combine the two images above together</h3>
+<script>
+   let imgEle1 = document.querySelectorAll(".image")[0];
+   let imgEle2 = document.querySelectorAll(".image")[1];
+   let resEle = document.querySelector(".result");
+   var context = resEle.getContext("2d");
+   let BtnEle = document.querySelector(".Btn");
+   BtnEle.addEventListener("click", () => {
+   resEle.width = imgEle1.width;
+      resEle.height = imgEle1.height;
+      context.globalAlpha = 1.0;
+      context.drawImage(imgEle1, 0, 0);
+      context.globalAlpha = 1.0;
+      context.drawImage(imgEle2, 0, 0);
+   });
+</script>
   </body>
 </html>
