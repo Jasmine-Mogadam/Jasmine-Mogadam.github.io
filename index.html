@@ -4,6 +4,8 @@
     <title>Character Creator</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="functs.js"></script>
+    <script src="coloringTest.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -13,68 +15,57 @@
         <h1>Editor</h1>
         <form id="form">
           <label for="shape">Shape:</label><br>
-          <select id="shape" name="shape">
+          <select id="shape" name="shape" onchange="update()">
             <option value="circle">Circle</option>
             <option value="square">Square</option>
             <option value="triangle">Triangle</option>
           </select><br>
           <label for="limb">Limb(s):</label><br>
-          <select id="limb" name="limb">
-            <option value="arms">Arms</option>
+          <select id="limb" name="limb" onchange="update()">
+            <option value="eye">Eyes</option>
             <option value="tail">Tail</option>
-            <option value="wings">Wings</option>
+            <option value="wing">Wings</option>
           </select><br>
           <label for="color">Body Color:</label><br>
-          <input type="color" id="color" name="color"><br><br>
-          <input type="button" value="Create!" onclick="update()">
+          <input type="color" id="color" name="color" onchange="update()">
         </form>
     </div>
 
     <div class="grid-child-output">
         <h1>Output</h1>
         <div id="output-image">
-          <img id="creature" src=""></img>
-          <script>
-          function update(){
+
+          <div class="container">
+            <img id="creature" src="https://pinkflamess.github.io/circle.PNG" crossorigin="Anonymous" hidden></img>
+              <!--img id="shape" src="https://pinkflamess.github.io/circle.PNG" crossorigin="Anonymous" hidden></img>
+              <img id="limb" src="https://pinkflamess.github.io/circle-eye.PNG" crossorigin="Anonymous" hidden></img>
+            -->
+            </div>
+              <div class="canvas">
+                <canvas id="Canvas"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <script>function update(){
           var form = document.getElementById("form");
           var image = "body.PNG";
+
           if(form.elements[0].value==="circle"){
-            image = "circle.PNG";
+            image = "https://pinkflamess.github.io/circle.PNG";
           }
           else if(form.elements[0].value==="square"){
-            image = "square.PNG";
+            image = "https://pinkflamess.github.io/square.PNG";
           }
           else if(form.elements[0].value==="triangle"){
-            image = "triangle.PNG";
+            image = "https://pinkflamess.github.io/triangle.PNG";
           }
           document.getElementById('creature').src = image;
           }
-          </script>
+        }</script>
         </div>
     </div>
 
   </div>
-  <h1>Combining multiple images into a single one</h1>
-<img class="image" src="body.PNG"/>
-<img class="image" src="eye.PNG"/>
-<canvas class="result"></canvas>
-<br />
-<button class="Btn">CLICK HERE</button>
-<h3>Click on the above button to combine the two images above together</h3>
-<script>
-   let imgEle1 = document.querySelectorAll(".image")[0];
-   let imgEle2 = document.querySelectorAll(".image")[1];
-   let resEle = document.querySelector(".result");
-   var context = resEle.getContext("2d");
-   let BtnEle = document.querySelector(".Btn");
-   BtnEle.addEventListener("click", () => {
-   resEle.width = imgEle1.width;
-      resEle.height = imgEle1.height;
-      context.globalAlpha = 1.0;
-      context.drawImage(imgEle1, 0, 0);
-      context.globalAlpha = 1.0;
-      context.drawImage(imgEle2, 0, 0);
-   });
-</script>
   </body>
 </html>
